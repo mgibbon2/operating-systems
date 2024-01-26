@@ -33,5 +33,5 @@ void print_list(list* ll);
 void flush_list(list* ll);
 
 /* De-allocates all data for the list. Ensure all memory allocated for list
- * ll is freed, including any allocated strings nad list ll itself. */
+ * ll is freed, including any allocated strings and list ll itself. */
 void free_list(list* ll);
