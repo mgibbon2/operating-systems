@@ -1,4 +1,4 @@
-NAME OF PROJECT:
+NAME OF PROJECT: Project 1: Makefile
 ================
 
 MEMBERS: Matthew Gibbons and Noah Storms
@@ -22,10 +22,11 @@ Describe each file and the purpose it serves.
 list.c - linked list demonstration written in c
 list.h - header file for the c file
 list_test.c - tests written for the list demonstration, also written in c
+Makefile - required makefile for executing the c programs, also cleans the files afterwards
 README.txt - this file
 
-
 Provide any special instructions to access or run your program.
+Simply type 'make'
 
 ROOT PASSWORD: NoReallyHaveAGreatDay24
 ==============
