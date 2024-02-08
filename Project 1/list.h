@@ -19,7 +19,7 @@ list* create_list();
  * to end of list ll. Returns 0 if successful, non-zero otherwise. */
 int add_to_list(list* ll, char* item);
 
-/* Removes the had of the list ll, extracts the string stored in the head,
+/* Removes the head of the list ll, extracts the string stored in the head,
  * and returns a pointer to this string. Also frees the removed head node. */
 char* remove_from_list(list* ll);
 

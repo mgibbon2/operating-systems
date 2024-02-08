@@ -59,7 +59,7 @@ int add_to_list(list* ll, char* item) {
     return 0;
 }
 
-/* Removes the had of the list ll, extracts the string stored in the head,
+/* Removes the head of the list ll, extracts the string stored in the head,
  * and returns a pointer to this string. Also frees the removed head node. */
 char* remove_from_list(list* ll) {
     if (ll == NULL || ll -> head == NULL) {
