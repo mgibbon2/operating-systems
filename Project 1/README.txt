@@ -39,12 +39,12 @@ PROBLEM DESCRIPTION AND REMEDIATION:
 
 	PART 0: SET UP
 	==============
-	The preparation section outlines the initial steps required to set up the development environment for the project. Updating the 	CentOS 7 operating system to ensure that the latest security patches and software updates are installed. After, a reboot is 	initiated to apply the changes and ensure the system is running the latest kernel version. Essential development tools are then 	installed, including the GCC compiler, ncurses-devel, make, wget, and perl. These tools are necessary for compiling and building C 	programs effectively. Once installed, the environment is ready for development.
+	The preparation section outlines the initial steps required to set up the development environment for the project. Updating the CentOS 7 operating system to ensure that the latest security patches and software updates are installed. After, a reboot is initiated to apply the changes and ensure the system is running the latest kernel version. Essential development tools are then installed, including the GCC compiler, ncurses-devel, make, wget, and perl. These tools are necessary for compiling and building C programs effectively. Once installed, the environment is ready for development.
 
 	PART 1: LINKED LIST
 	===================
-	The Linked List component of this project involves creating a linked list data structure in C. Each node in the list stores a 	character string called 'item' and a pointer called 'next' pointing to the next node in the list. The task includes implementing 	various functions to manipulate the linked list, such as adding nodes, removing nodes, printing the list, flushing the list, and 	freeing the memory allocated to the list.
+	The Linked List component of this project involves creating a linked list data structure in C. Each node in the list stores a character string called 'item' and a pointer called 'next' pointing to the next node in the list. The task includes implementing various functions to manipulate the linked list, such as adding nodes, removing nodes, printing the list, flushing the list, and freeing the memory allocated to the list.
 
 	PART 2: WRITING A MAKEFILE
 	===========================
-	The Makefile was heavily influenced from Makefile 4 and Makefile 5 from 	https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ (recommended tutorial)
+	The Makefile was heavily influenced from Makefile 4 and Makefile 5 from https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ (recommended tutorial)
