@@ -15,7 +15,7 @@ USERNAME: BestGroup
 PASSWORD: HaveAGreatDay24
 
 Describe where the files can be found.
-The files are located in /home/mgibbon2/os-project-1
+The files are located in ~/operating-systems/project-one
 
 Describe each file and the purpose it serves.
 .git - source control files
