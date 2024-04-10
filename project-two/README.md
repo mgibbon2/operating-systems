@@ -22,6 +22,33 @@ ROOT PASSWORD: NoReallyHaveAGreatDay24
 
 PROBLEM DESCRIPTION AND REMEDIATION:
 ====================================
+PART 1: CREATE A HELLO WORLD KERNEL MODULE
+==========================================
+During the development process, we encountered several issues related to the hello.c file and the Makefile. To ensure smooth execution, the following steps outlined below were followed:
+
+Header Installation:
+Ensure all necessary headers are installed correctly by executing the following command:
+sudo yum install "kernel-devel-uname-r == $(uname -r)"
+
+Makefile Adjustment:
+Modify the Makefile to use the correct syntax. Change M=$(PWD) modules to M=$(shell pwd) modules.
+
+Function Renaming in hello.c:
+To avoid conflicts with reserved names, rename the init_module and cleanup_module functions in the hello.c file. As an example, we did initialization_module and cleaning_module.
+
+Timestamp Discrepancy in dmesg Output:
+When inspecting the logs from the kernel ring buffer using the dmesg command, you may notice a difference in the timestamps between the printing of "Hello world!" and "Goodbye world!" messages.
+- "Hello world!" is displayed with a timestamp of 13:05:40.
+- "Goodbye world!" is displayed with a timestamp of 13:06:01.
+This variation in timestamps is a normal occurrence and can result from factors such as system clock precision, message generation timing, interrupt handling, and other kernel-related operations.
+
+If I want to print the messages from init_module and cleanup_module to the standard output in addition to the kernel ring buffer, we needed to....
+
+PART 2: CREATE A PRINT SELF KERNEL MODULE 
+=========================================
+
+PART 3: CREATE A PRINT OTHER KERNEL MODULE
+==========================================
 
 PART 4: KERNEL MODULES AND SYSTEM CALLS:
 ========================================
