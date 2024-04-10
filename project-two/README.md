@@ -24,14 +24,11 @@ PROBLEM DESCRIPTION AND REMEDIATION:
 ====================================
 PART 1: CREATE A HELLO WORLD KERNEL MODULE
 ==========================================
-During the development process, we encountered several issues related to the hello.c file and the Makefile. To ensure smooth execution, the following steps outlined below were followed:
+During the development process, we encountered issues related to the hello.c file. To ensure smooth execution, the following steps outlined below were followed:
 
 Header Installation:
 Ensure all necessary headers are installed correctly by executing the following command:
 sudo yum install "kernel-devel-uname-r == $(uname -r)"
-
-Makefile Adjustment:
-Modify the Makefile to use the correct syntax. Change M=$(PWD) modules to M=$(shell pwd) modules.
 
 Function Renaming in hello.c:
 To avoid conflicts with reserved names, rename the init_module and cleanup_module functions in the hello.c file. As an example, we did initialization_module and cleaning_module.
