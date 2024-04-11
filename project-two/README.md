@@ -15,7 +15,8 @@ USERNAME: BestGroup
 PASSWORD: HaveAGreatDay24
 
 Describe where the files can be found.
-The files are located in ~/operating-systems/project-two
+The files are located in `~/operating-systems/project-two`
+Each module has its own subdirectory `/module-[ModuleNumber]/` where a respective Makefile and .c file can be found.
 
 ROOT PASSWORD: NoReallyHaveAGreatDay24
 ==============
@@ -80,7 +81,7 @@ Steps to load, remove, and see output of module:
 
 `make` This will compile the .ko file
 
-`sudo insmod print_other.ko` This will load the module in the kernel
+`sudo insmod print_other.ko process_id=[(int) ChosenProcessId]` This will load the module in the kernel with the parameter value of process_id=(int) ChosenProcessId
 
 `dsmesg -T | tail` This will contain the output
 
