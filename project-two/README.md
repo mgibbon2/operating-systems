@@ -49,7 +49,7 @@ This variation in timestamps is a normal occurrence and can result from factors 
 
 3. If I want to print the messages from init module and cleanup module to the standard output in addition to the kernel ring buffer, what should I change?
 
-If I want to print the messages from init_module and cleanup_module to the standard output in addition to the kernel ring buffer, we needed to....
+If I want to print the messages from init_module and cleanup_module to the standard output in addition to the kernel ring buffer, we needed to change KERN_INFO to KERN_ALERT in printk() function increasing the logging.
 
 PART 2: CREATE A PRINT SELF KERNEL MODULE 
 =========================================
@@ -103,3 +103,5 @@ A kernel module is like an add-on for the operating system. It's a small piece o
 A system call is a way for regular programs to ask the operating system to do something for them. When a program needs to read or write a file, create a new process, or even just get the current time, it asks the operating system through system calls. The operating system provides a list of functions that programs can use to make these requests, like opening a file or creating a new process. These functions are usually accessed through standard libraries provided by the operating system.
 
 2. This article is over 20 years old. If you try [this example] from the article in your VM, does it still work? Use your own words to explain why you think this may be a good (or bad) thing.
+
+An outdated header is being used "<sys/syscall.h>". This would be bad since it can't run the code and could be potential security issue.
