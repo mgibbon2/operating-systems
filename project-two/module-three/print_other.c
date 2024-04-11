@@ -5,7 +5,7 @@
 
 int process_id = 0;
 // allows read access to user
-module_parameter(process_id, int, S_IRUSR);
+module_param(process_id, int, S_IRUSR);
 
 int __init print_other_init(void) {
     struct task_struct *task;
@@ -24,7 +24,7 @@ int __init print_other_init(void) {
         return -1;
     }
 
-    // Print information about the specified process and its parents
+    // print information about the specified process and its parents
     while (task != &init_task) {
         printk(KERN_INFO "PID: %d\n", task->pid);
         printk(KERN_INFO "Process Name: %s\n", task->comm);

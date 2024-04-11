@@ -59,7 +59,7 @@ Steps to load, remove, and see output of module:
 
 `sudo insmod print_self.ko` This will load the module in the kernel
 
-`dsmesg -T | tail` This will contain the output
+`dmesg -T | tail` This will contain the output
 
 `sudo rmmod print_self` This will remove the module from the kernel
 
@@ -83,9 +83,9 @@ Steps to load, remove, and see output of module:
 
 `sudo insmod print_other.ko process_id=[(int) ChosenProcessId]` This will load the module in the kernel with the parameter value of process_id=(int) ChosenProcessId
 
-`dsmesg -T | tail` This will contain the output
+`dmesg -T | tail` This will contain the output
 
-`sudo rmmod print_self` This will remove the module from the kernel
+`sudo rmmod print_other` This will remove the module from the kernel
 
 `make clean` This will remove the temporary files
 
