@@ -12,12 +12,12 @@ int __init print_other_init(void) {
     struct task_struct *parent_task;
     int pid = process_id;
 
-	// if pid is invalid return -1
+    // if pid is invalid return -1
     if (pid <= 0) {
         printk(KERN_INFO "Invalid process ID provided.\n");
         return -1;
     }
-	// if pid isn't found return -1
+    // if pid isn't found return -1
     task = pid_task(find_vpid(pid), PIDTYPE_PID);
     if (!task) {
         printk(KERN_INFO "Process with PID %d not found.\n", pid);

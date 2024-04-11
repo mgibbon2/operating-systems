@@ -79,6 +79,8 @@ PART 3: CREATE A PRINT OTHER KERNEL MODULE
 ==========================================
 Steps to load, remove, and see output of module:
 
+`pgrep bash` This will find an active process' id to be used in the insmod command
+
 `make` This will compile the .ko file
 
 `sudo insmod print_other.ko process_id=[(int) ChosenProcessId]` This will load the module in the kernel with the parameter value of process_id=(int) ChosenProcessId
