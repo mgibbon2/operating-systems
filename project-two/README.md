@@ -65,14 +65,17 @@ Steps to load, remove, and see output of module:
 
 `make clean` This will remove the temporary files
 
-1. As discussed in our lecture, in old kernels the mother of all processes is called init. In newer kernels, what is it called and what do you see from your module’s output?
+1. The macro current returns a pointer to the task struct of the current running process. See the following link: https://linuxgazette.net/133/saha.html When you load your module, which process is recognized as current?
 
 The macro current returns a pointer to the task struct of the current running process. When the module is loaded, the process recognized as current is typically the process that initiated the loading action. This could be a user-space process executing a system call to load the module or a kernel-level process executing code that triggers the loading of the module. In either case, the "current" process within the context of the module's execution would be the one responsible for the module's loading.
 
-2. To see the different states of a process, please refer to the same page above https: //linuxgazette.net/133/saha.html When printing state in your code, please map 3 the numeric state to its string state, e.g., print TASK RUNNING if state is 0. From your module’s output, which state(s) are observed?
+2. As discussed in our lecture, in old kernels the mother of all processes is called init. In newer kernels, what is it called and what do you see from your module’s output?
 
 In older kernels, the initial process is called "init". In newer kernels, particularly those using systemd as the init system, the initial process is often referred to as "systemd" or "systemd-init." This process serves as the root of the process tree in the system, similar to how "init" functioned in older kernels. Therefore, if you were to trace back from the current process to the root process (which would be "init" or "systemd"), you would see its name and process ID in the output of our module.
 
+3. To see the different states of a process, please refer to the same page above https: //linuxgazette.net/133/saha.html When printing state in your code, please map 3 the numeric state to its string state, e.g., print TASK RUNNING if state is 0. From your module’s output, which state(s) are observed?
+
+The observed states in my module's output are mostly TASK_INTERRUPTIBLE, with a couple of instances of TASK_RUNNING.
 
 
 PART 3: CREATE A PRINT OTHER KERNEL MODULE
