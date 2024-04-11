@@ -15,7 +15,7 @@ USERNAME: BestGroup
 PASSWORD: HaveAGreatDay24
 
 Describe where the files can be found.
-The files are located in ~/operating-systems/project-three
+The files are located in `~/operating-systems/project-three`
 
 ROOT PASSWORD: NoReallyHaveAGreatDay24
 ==============
