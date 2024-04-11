@@ -43,6 +43,10 @@ If I want to print the messages from init_module and cleanup_module to the stand
 
 PART 2: CREATE A PRINT SELF KERNEL MODULE 
 =========================================
+1. The macro current returns a pointer to the task struct of the current running process. When the module is loaded, the process recognized as current is typically the process that initiated the loading action. This could be a user-space process executing a system call to load the module or a kernel-level process executing code that triggers the loading of the module. In either case, the "current" process within the context of the module's execution would be the one responsible for the module's loading.
+2. In older kernels, the initial process is called "init". In newer kernels, particularly those using systemd as the init system, the initial process is often referred to as "systemd" or "systemd-init." This process serves as the root of the process tree in the system, similar to how "init" functioned in older kernels. Therefore, if you were to trace back from the current process to the root process (which would be "init" or "systemd"), you would see its name and process ID in the output of our module.
+
+
 
 PART 3: CREATE A PRINT OTHER KERNEL MODULE
 ==========================================
