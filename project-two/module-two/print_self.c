@@ -30,13 +30,13 @@ int __init print_self_init(void) {
 	
 	printk(KERN_INFO "PID: %d\n", task->pid);
 	printk(KERN_INFO "Process Name: %s\n ", task->comm);
-	printk(KERN_INFO "Process State: %ld\n", get_state(task->state));
+	printk(KERN_INFO "Process State: %s\n", get_state(task->state));
 	
 	while (task->parent != task) {
 		task = task->parent;
 		printk(KERN_INFO "Parent PID: %d\n", task->pid);
 		printk(KERN_INFO "Parent Process Name: %s\n", task->comm);
-		printk(KERN_INFO "Parent Process State: %ld\n", get_state(task->state));
+		printk(KERN_INFO "Parent Process State: %s\n", get_state(task->state));
 	}
 
 	return 0;
