@@ -49,8 +49,11 @@ void* threadFunction(void* arg) {
     int charIndex = args->charIndex;
     int* substringCountAddr = args->substringCountAddr;
 
+	// declaring variables inside a for loop wasn't valid C until C99 (causes error)
+	bool weIncrement = true;
 	do {
-		bool weIncrement = true;
+		// have to reset bool
+		weIncrement = true;
 		for (int i = 0; i < n2; i++) {
 			if (s1[charIndex + i] != s2[i]) {
 				weIncrement = false;
