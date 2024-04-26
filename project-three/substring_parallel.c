@@ -49,12 +49,11 @@ void* threadFunction(void* arg) {
     int charIndex = args->charIndex;
     int* substringCountAddr = args->substringCountAddr;
 
-	// declaring variables inside a for loop wasn't valid C until C99 (causes error)
-	bool weIncrement = true;
 	do {
-		// have to reset bool
-		weIncrement = true;
-		for (int i = 0; i < n2; i++) {
+		// have to declare variables outside a for loop since outdated gcc on VM (causes error)
+		int i;
+		bool weIncrement = true;
+		for (i = 0; i < n2; i++) {
 			if (s1[charIndex + i] != s2[i]) {
 				weIncrement = false;
 			}
@@ -75,8 +74,9 @@ int num_substring() {
 	int substringCount = 0;
     pthread_t threads[NUM_THREAD];
 	ThreadArgs *args;
-
-    for (int i = 0; i < NUM_THREAD; i++) {
+	// have to declare variables outside a for loop since outdated gcc on VM (causes error)
+	int i;
+    for (i = 0; i < NUM_THREAD; i++) {
 		// only way I figured out how to pass args to threads
         args = (ThreadArgs *)malloc(sizeof(ThreadArgs));
         if (args == NULL) {
@@ -89,7 +89,8 @@ int num_substring() {
         pthread_create(&threads[i], NULL, threadFunction, (void *)args);
     }
 
-	for (int i = 0; i < NUM_THREAD; i++) {
+	// remember, i already declared
+	for (i = 0; i < NUM_THREAD; i++) {
         pthread_join(threads[i], NULL);
     }
 
