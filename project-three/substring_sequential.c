@@ -64,14 +64,3 @@ int main(int argc, char *argv[])
  	printf("The number of substrings is: %d\n", count);
 	return 1;
 }
-
-
-
-
-
-
-
-
-
-
-
