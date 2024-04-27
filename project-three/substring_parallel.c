@@ -17,7 +17,7 @@ typedef struct {
     int* substringCountAddr;
 } ThreadArgs;
 
-// reads file w/ new line characters
+// reads file w/ new line characters from substring_sequential.c
 int readf(FILE *fp, char* fileName) {
 	if((fp=fopen(fileName, "r"))==NULL){
 		printf("ERROR: can't open %s!\n", fileName);
@@ -44,8 +44,9 @@ int readf(FILE *fp, char* fileName) {
 }
 
 void* threadFunction(void* arg) {
-	ThreadArgs* args = (ThreadArgs*)arg;
+	// don’t need validation checks because length of string 1 at least twice as long as string 2
 
+	ThreadArgs* args = (ThreadArgs*)arg;
     int charIndex = args->charIndex;
     int* substringCountAddr = args->substringCountAddr;
 
@@ -81,7 +82,7 @@ int num_substring() {
         args = (ThreadArgs *)malloc(sizeof(ThreadArgs));
         if (args == NULL) {
             printf("ERROR: Out of memory!\n");
-            exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
         }
         args->charIndex = i;
         args->substringCountAddr = &substringCount;
