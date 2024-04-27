@@ -1,13 +1,3 @@
-/*
- ============================================================================
- Name        : c.c
- Author      : Noah
- Version     :
- Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
- ============================================================================
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -18,6 +8,7 @@ char buffer[BUFFER_SIZE];  // Circular buffer to store characters
 int count = 0;  // Number of items in the buffer
 int in = 0;  // Index for the producer to write
 int out = 0;  // Index for the consumer to read
+int producer_finished = 0; // Flag to indicate producer finished
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;  // Mutex for thread synchronization
 pthread_cond_t cond_producer = PTHREAD_COND_INITIALIZER;  // Condition variable for the producer
@@ -31,8 +22,14 @@ int main() {
     pthread_t producer_thread, consumer_thread;
 
     // Create threads
-    pthread_create(&producer_thread, NULL, producer, NULL);
-    pthread_create(&consumer_thread, NULL, consumer, NULL);
+    if(pthread_create(&producer_thread, NULL, producer, NULL) != 0) {
+        perror("Error creating producer thread");
+        exit(1);
+    }
+    if(pthread_create(&consumer_thread, NULL, consumer, NULL) != 0) {
+        perror("Error creating consumer thread");
+        exit(1);
+    }
 
     // Join threads
     pthread_join(producer_thread, NULL);
@@ -74,6 +71,12 @@ void *producer(void *arg) {
         pthread_mutex_unlock(&mutex);
     }
 
+    // Set producer_finished flag
+    pthread_mutex_lock(&mutex);
+    producer_finished = 1;
+    pthread_cond_signal(&cond_consumer);
+    pthread_mutex_unlock(&mutex);
+
     // Close file
     fclose(file);
 
@@ -87,9 +90,15 @@ void *consumer(void *arg) {
         // Lock mutex to access shared resources
         pthread_mutex_lock(&mutex);
 
-        // Wait if buffer is empty
-        while (count == 0) {
+        // Wait if buffer is empty and producer hasn't finished
+        while (count == 0 && !producer_finished) {
             pthread_cond_wait(&cond_consumer, &mutex);
+        }
+
+        // Break out of loop if producer finished and buffer is empty
+        if (producer_finished && count == 0) {
+            pthread_mutex_unlock(&mutex);
+            break;
         }
 
         // Read character from buffer and print
@@ -107,4 +116,7 @@ void *consumer(void *arg) {
     // Exit thread
     pthread_exit(NULL);
 }
+
+
+
 
