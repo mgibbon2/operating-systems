@@ -93,15 +93,16 @@ void *producer_thread(void *arg)
     // Lock the global list before merging local lists
     pthread_mutex_lock(&mutex_lock);
 
-    // Merge the local list into the global list
-    if (List->header == NULL)
-    {
+    // Form a local list and add it to the global list in one run
+    struct Node *tmp = List->header;
+    if (tmp == NULL) {
         List->header = local_list.header;
         List->tail = local_list.tail;
-    }
-    else
-    {
-        List->tail->next = local_list.header;
+    } else {
+        while (tmp->next != NULL) {
+            tmp = tmp->next;
+        }
+        tmp->next = local_list.header;
         List->tail = local_list.tail;
     }
 
