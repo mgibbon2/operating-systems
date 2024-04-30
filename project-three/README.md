@@ -51,6 +51,8 @@ Description: Given a sequential program that accomplishes the task of counting s
 
 1. If you partition s1 among threads, you will miss those s2’s at the partition boundaries. Instead of partitioning the data, can you partition the task(s)?
 
+Yes, you can give each thread a subtask to compute (look at next n2 characters in the string). This would make the tasks execute in a pseudo-parallel nature.
+
 Task 2:
 =======
 Description: The program utilizes condition variables to synchronize access between the producer and consumer threads, ensuring orderly reading from the file and sequential writing into the circular queue. This enables efficient management of data flow, maintaining the integrity of the original message order throughout the process.
